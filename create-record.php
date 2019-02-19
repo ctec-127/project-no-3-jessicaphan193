@@ -1,4 +1,7 @@
 <?php // Filename: create-record.php
+
+//Record gets created
+
 $pageTitle = "Create Record";
 require 'inc/layout/header.inc.php'; 
 ?>

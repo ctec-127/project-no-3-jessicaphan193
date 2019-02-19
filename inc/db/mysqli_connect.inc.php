@@ -1,5 +1,7 @@
 <?php // Filename: mysqli_connect.inc.php
 
+//Changes the access to different db
+
 # Create a new connection to the database
 $host = 'localhost';
 $username = 'root';

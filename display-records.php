@@ -1,5 +1,8 @@
 <?php // Filename: display-records.php
 
+//Holds information for displaying once set
+//In this case; displaying student_v2.sql
+
 $pageTitle = "Record Management";
 require 'inc/layout/header.inc.php'; 
 ?>

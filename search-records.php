@@ -1,5 +1,7 @@
 <?php // Filename: search-records.php
 
+//Search for records depending on what selection is chosen
+
 $pageTitle = "Search Records";
 require 'inc/layout/header.inc.php';
 require 'inc/db/mysqli_connect.inc.php';

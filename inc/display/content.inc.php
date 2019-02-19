@@ -1,5 +1,7 @@
 <?php // Filename: connect.inc.php
 
+//What was displayed before adding student_v2.sql
+
 require __DIR__ . "/../db/mysqli_connect.inc.php";
 require __DIR__ . "/../functions/functions.inc.php";
 
