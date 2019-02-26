@@ -66,8 +66,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     // If we have no errors than we can try and insert the data
     if (count($error_bucket) == 0) {
         // Time for some SQL
-        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,finacial_aid,degree_program) ";
-        $sql .= "VALUES ('$first','$last',$id,'$email','$phone','$gpa','$finacial_aid','$degree_program')";
+        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program) ";
+        $sql .= "VALUES ('$first','$last',$id,'$email','$phone','$gpa','$financial_aid','$degree_program')";
 
         // comment in for debug of SQL
         // echo $sql;
@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             unset($email);
             unset($phone);
             unset($gpa);
-            unset($finacial_aid);
+            unset($financial_aid);
             unset($degree_program);
         }
     } else {
