@@ -41,6 +41,9 @@ function display_record_table($result){
         echo "<td><strong>{$row['last_name']}</strong></td>";
         echo "<td>{$row['email']}</td>";
         echo "<td>{$row['phone']}</td>";
+        echo "<td>{$row['gpa']}</td>";
+        echo "<td>{$row['financial_aid']}</td>";
+        echo "<td>{$row['degree_program']}</td>";
         echo '</tr>';
     } // end while
     // closing table tag and div
