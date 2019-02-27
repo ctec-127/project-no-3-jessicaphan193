@@ -53,14 +53,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     if (empty($_POST['financial_aid'])) {
         array_push($error_bucket,"<p>Financial Aid amount is required.</p>");
     } else {
-        #$phone = $_POST['financial_aid'];
-        $phone = $db->real_escape_string($_POST['financial_aid']);
+        #$financial_aid = $_POST['financial_aid'];
+        $financial_aid = $db->real_escape_string($_POST['financial_aid']);
     }
     if (empty($_POST['degree_program'])) {
         array_push($error_bucket,"<p>Degree Program is required.</p>");
     } else {
-        #$phone = $_POST['degree_program'];
-        $phone = $db->real_escape_string($_POST['degree_program']);
+        #$degree_program = $_POST['degree_program'];
+        $degree_program = $db->real_escape_string($_POST['degree_program']);
     }
 
     // If we have no errors than we can try and insert the data
