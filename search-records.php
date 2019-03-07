@@ -3,6 +3,8 @@
 //Search for records depending on what selection is chosen
 
 $pageTitle = "Search Records";
+
+//connecting to receive data
 require 'inc/layout/header.inc.php';
 require 'inc/db/mysqli_connect.inc.php';
 require 'inc/functions/functions.inc.php';

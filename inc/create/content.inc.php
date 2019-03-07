@@ -81,6 +81,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             echo '<div class="alert alert-success" role="alert">
             I saved that new record for you!
           </div>';
+
+          //unsetting to have it empty after successful record
             unset($first);
             unset($last);
             unset($id);
