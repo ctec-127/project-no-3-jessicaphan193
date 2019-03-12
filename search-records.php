@@ -7,7 +7,6 @@ $pageTitle = "Search Records";
 //connecting to receive data
 require 'inc/layout/header.inc.php';
 require 'inc/db/mysqli_connect.inc.php';
-require 'inc/functions/functions.inc.php';
 require 'inc/app/config.inc.php';
 ?>
 
@@ -17,7 +16,7 @@ require 'inc/app/config.inc.php';
         <?php 
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 if(!empty($_POST['search'])){
-                    $sql = "SELECT * FROM $db_table WHERE " . '"' . $_POST["search"] . '"' . " IN (student_id, first_name, last_name, email, phone) ORDER BY last_name ASC";
+                    $sql = "SELECT * FROM $db_table WHERE " . '"' . $_POST["search"] . '"' . " IN (student_id, first_name, last_name, email, phone, gpa, financial_aid, degree_program) ORDER BY last_name ASC";
                     // $sql = "SELECT * FROM student WHERE student_id LIKE '%val%' or field2 LIKE '%val%'
                     $result = $db->query($sql);
 
