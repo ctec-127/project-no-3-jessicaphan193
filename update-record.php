@@ -1,4 +1,7 @@
 <?php // Filename: update-record.php
+
+//updating record, little changes or adding more data
+
 $pageTitle = "Update Record";
 require_once 'inc/layout/header.inc.php'; 
 ?>

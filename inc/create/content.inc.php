@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         array_push($error_bucket,"<p>A student ID is required.</p>");
     } else {
         #$id = $_POST['id'];
-        $id = $db->real_escape_string($_POST['sid']);
+        $sid = $db->real_escape_string($_POST['sid']);
     }
     if (empty($_POST['email'])) {
         array_push($error_bucket,"<p>An email address is required.</p>");
@@ -50,8 +50,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$gpa = $_POST['gpa'];
        $gpa = $db->real_escape_string($_POST['gpa']);
     }
+    if (empty($_POST['grad_date'])) {
+        array_push($error_bucket,"<p>Graduation date is required.</p>");
+    } else {
+        #$grad_date = $_POST['grad_date'];
+        $grad_date = $db->real_escape_string($_POST['grad_date']);
+    }
     if (empty($_POST['financial_aid'])) {
-        array_push($error_bucket,"<p>Financial Aid amount is required.</p>");
+        array_push($error_bucket,"<p>Financial Aid is required.</p>");
     } else {
         #$financial_aid = $_POST['financial_aid'];
         $financial_aid = $db->real_escape_string($_POST['financial_aid']);
@@ -66,8 +72,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     // If we have no errors than we can try and insert the data
     if (count($error_bucket) == 0) {
         // Time for some SQL
-        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program) ";
-        $sql .= "VALUES ('$first','$last',$id,'$email','$phone','$gpa','$financial_aid','$degree_program')";
+        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,grad_date,financial_aid,degree_program) ";
+        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone','$gpa','$grad_date','$financial_aid','$degree_program')";
 
         // comment in for debug of SQL
         // echo $sql;
@@ -85,10 +91,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
           //unsetting to have it empty after successful record
             unset($first);
             unset($last);
-            unset($id);
+            unset($sid);
             unset($email);
             unset($phone);
             unset($gpa);
+            unset($grad_date);
             unset($financial_aid);
             unset($degree_program);
         }

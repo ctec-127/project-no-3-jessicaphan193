@@ -24,6 +24,11 @@
           <a class="dropdown-item" href="https://getbootstrap.com">Bootstrap</a>
         </div>
       </li>
+      
+      <li>
+        <li class="nav-item <?= echoActiveClassIfRequestMatches("advanced-search");?>">
+        <a class="nav-link" href="advanced-search.php">Advanced Search</a>
+      </li>
     </ul>
     <form action="search-records.php" method="POST" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">

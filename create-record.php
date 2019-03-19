@@ -1,6 +1,6 @@
 <?php // Filename: create-record.php
 
-//Record gets created
+//Creating a new record
 
 $pageTitle = "Create Record";
 require 'inc/layout/header.inc.php'; 

@@ -2,18 +2,18 @@
 
 require __DIR__ . "/../db/mysqli_connect.inc.php";
 
-$orderby = 'last_name';
+$orderby = 'last_name'; //default search by last name
 $filter = '';
 
-if (isset($_GET['filter'])) {
+if (isset($_GET['filter'])) { //beginning letter of last name, ^^default of last name
     $filter = $_GET['filter'];
 }
 
-if (isset($_GET['sortby'])) {
+if (isset($_GET['sortby'])) { //depends on what is click: sid, first_name, last_name, email, phone, gpa, grad_date, financial_aid, degree_program 
     $orderby = $_GET['sortby'];
 }
 
-if (isset($_GET['clearfilter'])){
+if (isset($_GET['clearfilter'])){ //reset button
     $filter = '';
 }
 

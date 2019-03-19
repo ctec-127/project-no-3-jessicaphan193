@@ -9,7 +9,7 @@ function display_message(){
     }
 }
 
-
+//Display in alphabetical order
 function display_letter_filters($filter){  
     echo '<span class="d-inline-block mr-3">Filter by <strong>Last Name</strong></span>';
  
@@ -26,15 +26,17 @@ function display_letter_filters($filter){
     echo '<a class="text-secondary p-2 mr-2 bg-success text-light border rounded" href="?clearfilter" title="Reset Filter">Reset</a>&nbsp;&nbsp;';
 }
 
-
+//Has links to filter alphabetically/in order depening on what is clicked
+//Includes a update and Delete record action
 function display_record_table($result){
     echo '<div class="table-responsive">';
     echo "<table class=\"table table-striped table-hover table-sm mt-3 table-bordered\">";
-    echo '<thead class="thead-dark"><tr><th class="bg-primary">Actions</th><th><a href="?sortby=student_id">Student ID</a></th><th><a href="?sortby=first_name">First Name</a></th><th><a href="?sortby=last_name">Last Name</a></th><th><a href="?sortby=email">Email</a></th><th><a href="?sortby=phone">Phone</a></th><th><a href="?sortby=gpa">GPA</a></th><th><a href="?sortby=financial_aid">Financial Aid</a></th><th><a href="?sortby=degree_program">Degree Program</a></th></tr></thead>';
+    echo '<thead class="thead-dark"><tr><th class="bg-primary">Actions</th><th><a href="?sortby=student_id">Student ID</a></th><th><a href="?sortby=first_name">First Name</a></th><th><a href="?sortby=last_name">Last Name</a></th><th><a href="?sortby=email">Email</a></th><th><a href="?sortby=phone">Phone</a></th><th><a href="?sortby=gpa">GPA</a></th><th><a href="?sortby=grad_date">Graduation Date</a></th><th><a href="?sortby=financial_aid">Financial Aid</a></th><th><a href="?sortby=degree_program">Degree Program</a></th></tr></thead>';
     # $row will be an associative array containing one row of data at a time
     while ($row = $result->fetch_assoc()){
         # display rows and columns of data
         echo '<tr>';
+        //Update or Delete record link
         echo "<td><a href=\"update-record.php?id={$row['id']}\">Update</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"delete-record.php?id={$row['id']}\" onclick=\"return confirm('Are you sure?');\">Delete</a></td>";
         echo "<td>{$row['student_id']}</td>";
         echo "<td><strong>{$row['first_name']}</strong></td>";
@@ -42,6 +44,7 @@ function display_record_table($result){
         echo "<td>{$row['email']}</td>";
         echo "<td>{$row['phone']}</td>";
         echo "<td>{$row['gpa']}</td>";
+        echo "<td>{$row['grad_date']}</td>";
         echo "<td>{$row['financial_aid']}</td>";
         echo "<td>{$row['degree_program']}</td>";
         echo '</tr>';

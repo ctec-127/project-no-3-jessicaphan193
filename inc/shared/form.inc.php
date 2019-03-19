@@ -7,27 +7,32 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
 -->
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
     <label class="col-form-label" for="first">First Name </label>
-    <input class="form-control" type="text" id="first" name="first" value="<?php echo (isset($first) ? $first : '');?>">
+    <input class="form-control" type="text" id="first" name="first" value="<?php echo (isset($first) ? $first: '');?>">
     <br>
     <label class="col-form-label" for="last">Last Name </label>
-    <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $last : '');?>">
+    <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $last: '');?>">
     <br>
     <label class="col-form-label" for="sid">Student ID </label>
     <input class="form-control" type="text" id="sid" name="sid" value="<?php echo (isset($sid) ? $sid: '');?>">
     <br>
     <label class="col-form-label" for="email">Email </label>
-    <input class="form-control" type="text" id="email" name="email" value="<?php echo (isset($email) ? $email : '');?>">
+    <input class="form-control" type="text" id="email" name="email" value="<?php echo (isset($email) ? $email: '');?>">
     <br>
     <label class="col-form-label" for="phone">Phone </label>
-    <input class="form-control" type="text" id="phone" name="phone" value="<?php echo (isset($phone) ? $phone : '');?>">
+    <input class="form-control" type="text" id="phone" name="phone" value="<?php echo (isset($phone) ? $phone: '');?>">
     <br>
     <label class="col-form-label" for="gpa">GPA</label>
-    <input class="form-control" type="number" min="0" max="5.0" step="0.01" id="gpa" name="gpa" value="<?php echo (isset($gpa) ? $gpa: '');?>">
+    <input class="form-control" type="number" min="0" max="4.0" step="0.01" id="gpa" name="gpa" value="<?php echo (isset($gpa) ? $gpa: '');?>">
     <br>
-    <label class="col-form-label" for="yes">Financial Aid: </label>
+    <label class="col-form-label" for="grad_date">Graduation Date</label>
+    <input class="form-control" type="date" min="2017-01-01" max="2020-12-31" id="grad_date" name="grad_date" value="<?php echo (isset($grad_date) ? $grad_date: '');?>">
     <br>
-    <label class="radio-inline" for="yes"><input type="radio" name="financial_aid" id="yes" value="YES"> Yes </label>
-    <label class="radio-inline" for="no"><input type="radio" name="financial_aid" id="no" value="NO" checked> No </label>
+    <label class="col-form-label" for="financial_aid">Financial Aid: </label>
+    <br>
+
+    <input type="radio" name="financial_aid" value="1"<?php if (isset($_POST['financial_aid']) and $_POST['financial_aid'] == 'yes') echo ' checked'; ?>>Yes
+    <input type="radio" name="financial_aid" value="no"<?php if (isset($_POST['financial_aid']) and $_POST['financial_aid'] == 'no') echo ' checked'; ?>>No
+    
     <br>
     <label class="col-form-label" for="degree_program">Degree Program</label>
         <select class="form-control" id="degree_program" name="degree_program">
