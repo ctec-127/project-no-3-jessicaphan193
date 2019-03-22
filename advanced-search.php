@@ -21,7 +21,7 @@ require_once 'inc/functions/functions.inc.php';
     <div class="form-group">
         <label class="col-lg-2">First Name</label>
         <div class="col-lg-4">
-        <input type="text" class="form-control" name="first_name" placeholder="First name" value="<?php echo (isset($first) ? $first : ''); ?>">
+        <input type="text" class="form-control" name="first_name" placeholder="First name is required" value="<?php echo (isset($first) ? $first : ''); ?>">
         </div>
     </div>
 
@@ -33,17 +33,16 @@ require_once 'inc/functions/functions.inc.php';
     </div>
 
     <div class="form-group">
-        <label class="col-lg-2">Phone</label>
-        <div class="col-lg-4">
-        <input type="text" class="form-control" name="phone" placeholder="Phone number" value="<?php echo (isset($phone) ? $phone : ''); ?>">
-        </div>
-    </div>
-
-    <div class="form-group">
         <label class="col-lg-2">Email</label>
         <div class="col-lg-4">
         <input type="text" class="form-control" name="email" placeholder="Email" value="<?php echo (isset($email) ? $email : ''); ?>">
         </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-2">Phone</label>
+        <div class="col-lg-4">
+        <input class="form-control" type="text" id="phone" name="phone" placeholder="Phone Number" value="<?php echo (isset($phone) ? $phone: '');?>">        </div>
     </div>
 
     <div class="form-group">
@@ -56,7 +55,7 @@ require_once 'inc/functions/functions.inc.php';
     <div class="form-group">
         <label class="col-lg-2">Graduation Date</label>
         <div class="col-lg-4">
-        <input type="date" min="2017-01-01" max="2020-12-31" class="form-control" name="grad_date>" value="<?php echo (isset($grad_date) ? $grad_date : ''); ?>">
+        <input type="date" min="2017-01-01" max="2020-12-31" class="form-control" name="grad_date" value="<?php echo (isset($grad_date) ? $grad_date : ''); ?>">
         </div>
     </div>
 
@@ -83,101 +82,102 @@ require_once 'inc/functions/functions.inc.php';
     <div class="form-group">
         <label class="col-lg-2"></label>
         <div class="col-lg-4">
-        <button class="btn btn-primary" type="submit">Search</button>
+        <button class="btn btn-primary" type="submit" name="search">Search</button>
         <button class="btn btn-primary" a href="advanced-search.php">Clear</a>&nbsp;&nbsp;</button>
         </div>
     </div>
 </form>
 
-
-
-
-
-
 <?php
-//Displaying search result
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     
-    if (!empty($_POST['first_name'])){
+    
+    //$query = "SELECT * FROM $db_table WHERE";
+
+    //first part of sql
+    if(!empty($_POST['first_name'])){
         $first_name = $_POST['first_name'];
-        $firstSQL = " first_name = " . '"' . $first_name . '"';
-    } else {
-        $firstSQL = ' first_name != null'; 
+        $firstSQL = " first_name = " .  '"' . $first_name . '"';
+    }else {
+        $firstSQL = ''; 
     }
 
-    if (!empty($_POST['last_name'])){
+    if(!empty($_POST['last_name'])){
         $last_name = $_POST['last_name'];
-        $lastSQL = " AND last_name = " . '"' . $last_name . '"';
-    } else {
-        $lastSQL = '';
+        // $lastSQL = " last_name = " .  '"' . $last_name . '"'; <-- searching for indivisual
+
+        //followed be the other when searching with first name
+        $lastSQL = " AND last_name = " .  '"' . $last_name . '"';
+    }else {
+        $lastSQL = ''; 
     }
 
-    if (!empty($_POST['phone'])){
-        $phone = $_POST['phone'];
-        $phoneSQL = " AND phone = " . '"' . $phone . '"';
-    } else {
-        $phoneSQL = '';
-    }
-
-    if (!empty($_POST['email'])){
+    if(!empty($_POST['email'])){
         $email = $_POST['email'];
-        $emailSQL = " AND email = " . '"' . $email . '"';
-    } else {
-        $emailSQL = '';
+        // $emailSQL = " email = " .  '"' . $email . '"';
+        $emailSQL = " AND email = " .  '"' . $email . '"';
+    }else {
+        $emailSQL = ''; 
     }
 
-    if (!empty($_POST['gpa'])){
+    if(!empty($_POST['phone'])){
+        $phone = $_POST['phone'];
+        // $phoneSQL = " phone = " .  '"' . $phone . '"';
+        $phoneSQL = " AND phone = " .  '"' . $phone . '"';
+    }else {
+        $phoneSQL = ''; 
+    }
+
+    if(!empty($_POST['gpa'])){
         $gpa = $_POST['gpa'];
-        $gpaSQL = " AND gpa = " . '"' . $gpa . '"';  
-    } else {
-        $gpaSQL = '';
+        // $gpaSQL = " gpa = " .  '"' . $gpa . '"';
+        $gpaSQL = " AND gpa = " .  '"' . $gpa . '"';
+    }else {
+        $gpaSQL = ''; 
     }
 
-    if (!empty($_POST['grad_date'])){
+    if(!empty($_POST['grad_date'])){
         $grad_date = $_POST['grad_date'];
-        $grad_dateSQL = " AND grad_date = " . '"' . $grad_date . '"';
-    } else {
-        $grad_dateSQL = '';
+        // $grad_dateSQL = " grad_date = " .  '"' . $grad_date . '"';
+        $grad_dateSQL = " AND grad_date = " .  '"' . $grad_date . '"';
+    }else {
+        $grad_dateSQL = ''; 
     }
 
-    if (!empty($_POST['financial_aid'])){
-        $financial_aid = $_POST['financial_aid'];
-        $financial_aidSQL = " AND financial_aid = " . '"' . $financial_aid . '"';
-    } else {
-        $financial_aidSQL = '';
-    }
-
-    if (!empty($_POST['degree_program'])){
+    if(!empty($_POST['degree_program'])){
         $degree_program = $_POST['degree_program'];
-        $degree_programSQL = " AND degree_program = " . '"' . $degree_program . '"';
-    } else {
-        $degree_programSQL = '';
+        // $degree_programSQL = " degree_program = " .  '"' . $degree_program . '"';
+        $degree_programSQL = " AND degree_program = " .  '"' . $degree_program . '"';
+    }else {
+        $degree_programSQL = ''; 
     }
 
+    // $sql = $query;
 
-    $sql = "SELECT * FROM $db_table WHERE" . "$firstSQL";
+    $sql = "SELECT * FROM $db_table WHERE" . $firstSQL . $lastSQL . $emailSQL . $phoneSQL . $gpaSQL . $grad_dateSQL . $degree_programSQL . " ORDER by last_name ASC";
 
+    $result = $db->query($sql);    
+
+    //optional comment/uncomment for "guide"
+    //echo $sql;
+
+    //displaying sad face if can't find result
+    if (!$result){
+        echo "<p class=\"display-4 mt-4 text-center\">No results found for your search.</p>";
+        echo '<img class="mx-auto d-block mt-4" src="img/frown.png" alt="A sad face">';
+        echo "<p class=\"display-4 mt-4 text-center\">Please try again.</p>";
+    } else if ($result->num_rows == 0) {
+        echo "<p class=\"display-4 mt-4 text-center\">No results found for your search.</p>";
+        echo '<img class="mx-auto d-block mt-4" src="img/frown.png" alt="A sad face">';
+        echo "<p class=\"display-4 mt-4 text-center\">Please try again.</p>";
+    } else {
+        echo "<h2 class=\"mt-4 text-center\">$result->num_rows record(s) found for your search.</h2>";
+        display_record_table($result);
+        //^^result gets displayed if found
+    }
     
-    $result = $db->query($sql);
-    echo $sql;
-
-    if ($result->num_rows > 0) {
-        echo "<h3 class='alert alert-success mb-4'>$result->num_rows results were found</h3>";
-    // echo $sql;
-    display_record_table($result);
-}
 }
 ?>
-
-
-
-
-
-
-
-
-</div>
 
 </div> <!--container -->
 
